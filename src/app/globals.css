@@ -1,26 +1,962 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --blue: #082d91;
+  --deep-blue: #082570;
+  --orange: #ff7419;
+  --text: #092d83;
+  --muted: #6b7895;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Remove page scrollbar */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Prevent the main page from scrolling */
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* Login page fills the screen */
+.login-page {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* LOGIN PAGE */
+
+.login-page {
+  display: grid;
+  grid-template-columns: 56.5% 43.5%;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+/* LEFT PANEL */
+
+.welcome-panel {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  color: white;
+
+  background:
+    radial-gradient(
+      circle at 3% 73%,
+      rgba(255, 119, 25, 0.22),
+      transparent 10%
+    ),
+    radial-gradient(
+      circle at 87% 92%,
+      rgba(255, 105, 26, 0.22),
+      transparent 19%
+    ),
+    linear-gradient(
+      145deg,
+      #1743bd 0%,
+      #082c88 54%,
+      #071f68 100%
+    );
+}
+
+.dot-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  pointer-events: none;
+
+  background-image: radial-gradient(
+    #a8c4ff 1px,
+    transparent 1px
+  );
+
+  background-size: 17px 17px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 88%
+  );
+}
+
+
+.welcome-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Welcome content layout */
+.welcome-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 35px 45px;
+ 
+  flex-direction: column;
+}
+
+/* Attractive brand at the top */
+
+
+/* WeGrow first line */
+.brand-first-line {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  color: #ffffff;
+  
+  font-size: clamp(42px, 4.5vw, 65px);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+/* Logo icon replacing the letter o */
+.logo-o {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.78em;
+  height: 0.78em;
+  flex-shrink: 0;
+}
+
+.logo-o img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ConnectX second line */
+.connect-text {
+  display: block;
+  margin-top: 5px;
+  margin-left: 0.83em;
+  color: #ffffff;
+  font-size: clamp(30px, 3vw, 43px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.orange-x {
+  color: #ff812b;
+}
+
+/* Welcome message spacing */
+.welcome-copy {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .welcome-content {
+    padding: 28px;
+  }
+
+  
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .welcome-content {
+    padding: 22px;
+  }
+
+  .brand-name {
+    padding: 10px 14px;
+    margin-bottom: 28px;
+  }
+
+  .brand-first-line {
+    font-size: clamp(38px, 9vw, 52px);
+  }
+
+  .connect-text {
+    font-size: clamp(27px, 6vw, 35px);
+  }
+}
+
+/* WELCOME COPY */
+
+.welcome-copy {
+  margin-top: 38px;
+  max-width: 410px;
+}
+
+.welcome-copy h1 {
+  font-size: clamp(25px, 1.8vw, 34px);
+  line-height: 1.16;
+  letter-spacing: -1px;
+  font-weight: 800;
+}
+
+.welcome-copy h1 span {
+  color: #ff812b;
+}
+
+.welcome-copy > p {
+  max-width: 380px;
+  margin-top: 12px;
+
+  font-size: 12px;
+  line-height: 1.65;
+  color: #e4eaff;
+}
+
+/* FEATURE GRID */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 145px 145px;
+  gap: 9px 18px;
+  margin-top: 17px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+.feature-icon {
+ width: 42px; height: 42px; padding: 5px; object-fit: contain; flex-shrink: 0; border-radius: 12px; background-color:#0b3cae; border: none;
+}
+
+/* SQUIRREL MESSAGE */
+
+.mascot-message {
+  position: absolute;
+  z-index: 3;
+
+  right: 6.7%;
+  bottom: 46%;
+
+  padding: 12px 15px;
+
+  background: white;
+  color: #102f7f;
+
+  border-radius: 14px;
+
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 700;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+
+  animation: messageFloat 3s ease-in-out infinite;
+}
+
+.message-arrow {
+  position: absolute;
+  left: 15px;
+  bottom: -7px;
+
+  width: 0;
+  height: 0;
+
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 9px solid white;
+}
+
+/* SQUIRREL ANIMATION */
+
+.squirrel-mascot {
+  position: absolute;
+  z-index: 2;
+
+  right: 2.5%;
+  bottom: 8px;
+
+  width: min(36%, 350px);
+  max-height: 47%;
+
+  object-fit: contain;
+  object-position: bottom right;
+
+  animation: squirrelFloat 3s ease-in-out infinite;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+@keyframes squirrelFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes messageFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* BRAND BADGES */
+
+.brand-badges {
+  position: absolute;
+  left: 4.4%;
+  bottom: 33px;
+
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 5px 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.brand-dot {
+  display: grid;
+  place-items: center;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.green {
+  background: #1d9d61;
+}
+
+.purple {
+  background: #6555e9;
+}
+
+.red {
+  background: #d62d45;
+}
+
+/* RIGHT PANEL */
+
+.form-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-family:"inter",sans-serif;
+
+  min-width: 0;
+  min-height: 0;
+
+  padding: 20px 24px;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(215, 222, 242, 0.55),
+      transparent 32%
+    ),
+    linear-gradient(
+      140deg,
+      #f4f6fc 60%,
+      #f8f0ee
+    );
+}
+
+/* LOGIN CARD */
+
+.login-card {
+  width: 100%;
+  max-width: 350px;
+
+  padding: 25px 27px 19px;
+
+  border-radius: 17px;
+  background: white;
+
+  box-shadow: 0 12px 35px rgba(22, 46, 100, 0.12);
+}
+
+.card-logo {
+  display: block;
+
+  width: 160px;
+  height: 62px;
+
+  margin: 0 auto 15px;
+
+  object-fit: contain;
+}
+
+/* FORM HEADING */
+
+.form-heading h2 {
+  font-family:"inter",sans-serif;
+  font-size: 28px;
+  line-height: 1.4;
+  font-weight: 800;
+  color: #092f89;
+}
+
+.form-heading p {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-family:"inter",sans-serif;
+
+  font-size: 10px;
+  line-height: 1.6;
+  color: #69758e;
+}
+
+/* FORM INPUTS */
+
+.form-group {
+  margin-bottom: 11px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-family:"inter",sans-serif;
+
+  font-size: 10px;
+  font-weight: 600;
+  color: #15357e;
+}
+
+.form-group input {
+  display: block;
+
+  width: 100%;
+  height: 36px;
+
+  padding: 0 10px;
+
+  border: 1px solid #dce2ee;
+  border-radius: 9px;
+
+  outline: none;
+  background: #fff;
+  color: #102b70;
+  font-family:"inter",sans-serif;
+
+  font-size: 10px;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.form-group input::placeholder {
+  color: #8993a7;
+}
+
+.form-group input:focus {
+  border-color: #1746ce;
+  box-shadow: 0 0 0 2px rgba(23, 70, 206, 0.12);
+}
+
+/* PASSWORD */
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 49px;
+}
+
+.show-password {
+  position: absolute;
+  top: 0;
+  right: 7px;
+
+  height: 36px;
+
+  border: 0;
+  background: transparent;
+  color: #1c45ba;
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* SIGN IN BUTTON */
+
+.sign-in-button {
+  width: 100%;
+  height: 38px;
+
+  margin-top: 17px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    100deg,
+    #ff7116,
+    #ff8738
+  );
+
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+
+  box-shadow: 0 5px 14px rgba(255, 112, 22, 0.26);
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.sign-in-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 7px 18px rgba(255, 112, 22, 0.32);
+}
+
+/* FORGOT PASSWORD */
+
+.forgot-button {
+  display: block;
+  margin: 7px auto 12px;
+
+  border: none;
+  background: transparent;
+  color: #0a328e;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.forgot-button:hover,
+.reset-button:hover {
+  text-decoration: underline;
+}
+
+/* FORM MESSAGE */
+
+.form-message {
+  margin: 8px 0 12px;
+  padding: 9px;
+
+  border-radius: 7px;
+  background: #fff0ed;
+  color: #bb3429;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.form-message.success {
+  background: #eaf8ef;
+  color: #16713b;
+}
+
+/* PROTOTYPE ACCOUNTS */
+
+.prototype-box {
+  padding: 11px 11px 9px;
+
+  border: 1px dashed #c6d3ed;
+  border-radius: 11px;
+
+  background: #fcfdff;
+}
+
+.prototype-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+
+  margin-bottom: 8px;
+}
+
+.prototype-header h3 {
+  color: #10368f;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.prototype-header > span {
+  color: #7e8ba4;
+  font-size: 8px;
+}
+
+/* ACCOUNT LIST */
+
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.account-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  width: 100%;
+  padding: 2px 0;
+
+  text-align: left;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+}
+
+.account-item:hover {
+  background: #f0f4ff;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 22px;
+  height: 22px;
+
+  border-radius: 50%;
+
+  color: white;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  min-width: 0;
+}
+
+.account-info strong {
+  color: #152e64;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.account-info small {
+  color: #64728e;
+  font-size: 8px;
+  line-height: 1.35;
+
+  overflow-wrap: anywhere;
+}
+
+.prototype-note {
+  margin-top: 9px;
+
+  color: #65728c;
+  font-size: 8px;
+  line-height: 1.55;
+}
+
+/* RESET BUTTON */
+
+.reset-button {
+  display: block;
+  margin: 10px auto 0;
+
+  border: none;
+  background: transparent;
+  color: #0a328e;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* FOOTER */
+
+.form-footer {
+  color: #7886a3;
+  font-size: 9px;
+  text-align: center;
+}
+
+/* LARGE SCREENS */
+
+@media (min-width: 1500px) {
+  .welcome-content {
+    padding-top: 35px;
+  }
+
+  .login-card {
+    max-width: 350px;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 1050px) {
+  .login-page {
+    grid-template-columns: 52% 48%;
+  }
+
+  .welcome-content {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .brand-first-line {
+    font-size: clamp(43px, 5vw, 60px);
+  }
+
+  .connect-text {
+    font-size: clamp(29px, 3.4vw, 40px);
+  }
+
+  .welcome-copy {
+    margin-top: 35px;
+  }
+
+  .squirrel-mascot {
+    width: 43%;
+  }
+
+  .mascot-message {
+    right: 5%;
+  }
+
+  .login-card {
+    max-width: 340px;
+    padding: 23px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .login-page {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .welcome-panel {
+    min-height: 420px;
+    height: 420px;
+  }
+
+  .welcome-content {
+    height: 420px;
+    min-height: 420px;
+    padding: 24px 6%;
+  }
+
+  .brand-name {
+    margin-bottom: 24px;
+  }
+
+  .brand-first-line {
+    font-size: clamp(43px, 10vw, 58px);
+    letter-spacing: -3px;
+  }
+
+  .connect-text {
+    margin-top: 3px;
+    margin-left: 0.83em;
+    font-size: clamp(29px, 6.8vw, 39px);
+    letter-spacing: -1.5px;
+  }
+
+  .welcome-logo {
+    width: 145px;
+    height: 62px;
+  }
+
+  .welcome-copy {
+    max-width: 60%;
+    margin-top: 25px;
+  }
+
+  .welcome-copy h1 {
+    font-size: 25px;
+  }
+
+  .welcome-copy > p {
+    font-size: 11px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .feature-item {
+    font-size: 9px;
+    gap: 5px;
+  }
+
+  .squirrel-mascot {
+    right: 1%;
+    bottom: 20px;
+    width: 39%;
+    max-height: 55%;
+  }
+
+  .mascot-message {
+    right: 4%;
+    bottom: 58%;
+    padding: 9px;
+    font-size: 9px;
+  }
+
+  .brand-badges {
+    left: 6%;
+    bottom: 15px;
+    gap: 4px;
+  }
+
+  .brand-badge {
+    padding: 4px 6px;
+    font-size: 8px;
+  }
+
+  .form-panel {
+    min-height: auto;
+    padding: 35px 18px 25px;
+  }
+
+  .login-card {
+    max-width: 390px;
+    padding: 26px;
+  }
+
+  .card-logo {
+    width: 160px;
+  }
+
+  .form-footer {
+    padding-bottom: 5px;
+  }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+  .brand-first-line {
+    font-size: 42px;
+  }
+
+  .connect-text {
+    font-size: 28px;
+  }
+
+  .welcome-copy {
+    max-width: 66%;
+  }
+
+  .welcome-copy h1 {
+    font-size: 22px;
+  }
+
+  .welcome-copy > p {
+    font-size: 10px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .squirrel-mascot {
+    width: 36%;
+  }
+
+  .mascot-message {
+    bottom: 56%;
+  }
+
+  .login-card {
+    padding: 21px 18px;
+  }
+}
+
+/* ACCESSIBILITY: REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .squirrel-mascot,
+  .mascot-message {
+    animation: none;
+    will-change: auto;
+  }
+
+  .sign-in-button {
+    transition: none;
+  }
 }
